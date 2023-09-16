@@ -41,3 +41,9 @@ body,html{
     text-transform: uppercase;
     font-weight: 300;
 }
+@media (max-width:660px) {
+    #random-text{
+        font-size: 30px;
+       
+    }
+}
