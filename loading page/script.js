@@ -16,8 +16,7 @@ tl
     })
     .from("#second-lowest",{
         opacity:0,
-        duration:.1,
-        delay:1,
+        delay:0.9,
         onStart:function(){
             $('#second-lowest').textillate({ 
                 in: { effect: 'fadeInUp',
@@ -34,8 +33,7 @@ tl
     
     .from("#third-lowest",{
         opacity:0,
-        delay:1,
-        duration:.1,
+        delay:0.9,
         onStart:function(){
             $('#third-lowest').textillate({ 
                 in: { effect: 'fadeInUp',
@@ -49,8 +47,7 @@ tl
     })
     .from("#second-top",{
         opacity:0,
-        duration:0.1,
-        delay:1,
+        delay:0.9,
         onStart:function(){
             $('#second-top').textillate({ 
                 in: { effect: 'fadeInUp',
@@ -64,22 +61,20 @@ tl
     })
     .from("#top",{
         opacity:0,
-        delay:1,
+        delay:0.9,
 
         onStart:function(){
             $('#top').textillate({ 
                 in: { effect: 'fadeInUp',
-                callback:function(){
-                    $('#top').textillate('out')
-                }
+               
             },
-                out:  { effect: 'fadeOutUp' },
+               
         });
         }
     })
     .to("#top-screen",{
         top : "-100%",
         delay:1,
-        duration:1.2,
+        
         ease :"Power4.easeOut"
     })
