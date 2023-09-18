@@ -1,62 +1,299 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
 }
 
-body,html{
-    height: 100%;
-    width: 100%;
-    background-color: #dadada;
-    position: relative;
-}
-#main{
-    height:100%;
-    width: 100%;
-    position: relative;
-    overflow: hidden;
+body, html {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  background-color: #000;
+  font-family: 'Roboto';
+  position: relative;
 }
 
-#top-screen{
-    position: absolute;
-    height: 100%;
-    color: white;
-    width: 100%;
-    background-color: #000;
+#top-screen {
+  position: absolute;
+  height: 100%;
+  color: white;
+  width: 100%;
+  z-index: 99;
+
+  overflow: hidden;
+  /* background: url("https://svvv.edu.in/images/logo-small.png"); */
+  background-color: #000;
 }
-#top-screen>h1{
-    font-size: 120px;
-    position: absolute;
-    right: 5%;
-    overflow: hidden;
+
+#top-screen>h1 {
+  font-size: 120px;
+  position: absolute;
+  right: 5%;
+  color: white;
+  font-weight: 800;
+  overflow: hidden;
+
 }
-#lowest{
-    bottom: 5%;
+
+#lowest {
+  bottom: 5%;
 }
-#second-lowest{
-    bottom: 25%;
+
+#second-lowest {
+  bottom: 25%;
 }
-#second-top{
-    top:20%;
+
+#second-top {
+  top: 20%;
 }
-#third-lowest{
-    top:40%;
+
+#third-lowest {
+  top: 40%;
 }
-#random-text{
-    padding: 40px 40px;
-    font-size: 40px;
-    text-transform: uppercase;
-    font-weight: 300;
+
+#random-text {
+  padding: 40px 40px;
+  font-size: 40px;
+  text-transform: uppercase;
+  font-weight: 300;
 }
+
+
+a {
+  text-decoration: none;
+}
+
+#main {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background: url("https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80");
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+
+#main .bars {
+  position: fixed;
+  height: 30px;
+  width: 50px;
+  top: 5%;
+  right: 5%;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  z-index: 9999999999;
+  cursor: pointer;
+}
+
+#nav-logo {
+  position: absolute;
+  left: 0%;
+  padding: 10px 10px;
+  background-position: center;
+  display: none;
+}
+
+#main .bars::before {
+  position: absolute;
+  content: "";
+  height: 2px;
+  width: 90%;
+  background: #fff;
+  transition: 0.3s linear;
+}
+
+#main .bars.active::before {
+  transform: rotate(45deg);
+  width: 50%;
+  top: 5%;
+  background: #000;
+}
+
+#main .bars::after {
+  position: absolute;
+  content: "";
+  height: 2px;
+  width: 90%;
+  background: #fff;
+  top: 35%;
+  transition: 0.3s linear;
+}
+
+#main .bars.active::after {
+  transform: rotate(-45deg);
+  width: 50%;
+  top: 5%;
+  background: #000;
+}
+
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999999999;
+  overflow: hidden;
+  display: none;
+}
+
+.menu .navBefore {
+  position: absolute;
+  margin-left: 100%;
+  width: 100%;
+  height: 100%;
+  background: #017bf5;
+}
+
+.menu .nav {
+  position: relative;
+  margin-left: 100%;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu .nav ul {
+  opacity: 0;
+}
+
+.menu .nav ul li {
+  list-style: none;
+}
+
+.menu .nav ul li a {
+  position: relative;
+  font-size: 4.5rem;
+  text-decoration: none;
+  text-align: center;
+  color: #666;
+}
+
+.menu .nav ul li a:hover,
+.menu .nav ul li.active a {
+  color: #000;
+}
+
+
+
+
+
+#nav {
+  height: 100px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 1.5vw;
+  gap: 35px;
+  padding: 0 35px;
+
+}
+
+#nav img {
+  height: 70px;
+
+}
+
+#nav h4 {
+  text-transform: uppercase;
+  font-weight: 800;
+  color: #dadada;
+}
+
+.page1 {
+
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  background-color: #000;
+}
+
+
 @media (max-width:660px) {
-    #random-text{
-        font-size: 6vw;
-       
-    }
-    #top-screen>h1{
-        font-size: 6vh;
-    }
+  #random-text {
+    font-size: 6vw;
+    padding: 130px 10px;
+
+  }
+
+  #nav {
+    display: none;
+
+  }
+
+  #nav-logo {
+    display: flex;
+    z-index: 999;
+  }
+
+  #main .bars {
+    display: flex;
+
+
+
+  }
+
+  #top-screen>h1 {
+    padding: 60px 20px;
+    font-size: 6vh;
+  }
+
+  .page1 {
+    background-color: #017bf5;
+  }
+
 }
 
+/* -------------------------- mouse animation code ----------------------- */
+.link {
+  display: inline-block;
+}
 
+.circle {
+  position: fixed;
+  background-color: #fff;
+  width: 10px;
+  height: 10px;
+  left: -10px;
+  top: -10px;
+  border-radius: 100%;
+  z-index: 1;
+  /* user-select: none; */
+  /* pointer-events: none; */
+  z-index: 10000;
+  transform: scale(1);
+
+  &.active {
+    opacity: 1;
+    transform: scale(0);
+  }
+}
+
+.circle-follow {
+  position: fixed;
+  border: 1px solid #fff;
+  width: 30px;
+  height: 30px;
+  left: -21px;
+  top: -21px;
+  border-radius: 100%;
+  z-index: 1;
+  user-select: none;
+  pointer-events: none;
+  z-index: 10000;
+  /* //overflow: hidden; */
+  transform: scale(1);
+
+  &.active {
+    transform: scale(3);
+  }
+}
+
+/* ---------------------------- end here -------------- */
