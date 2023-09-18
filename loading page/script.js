@@ -16,7 +16,7 @@ $(window).on('mousemove', moveCircle);
 
 
 
-
+gsap.registerPlugin(ScrollTrigger);
 
 
 
@@ -100,6 +100,20 @@ tl
         
         ease :"Power4.easeOut"
     })
+
+
+    
+  gsap.to("#main",{
+      backgroundColor:"#fff",
+      scrollTrigger:{
+          trigger:"#main",
+          scroller:"body",
+           markers:true, 
+          start:"top -25%",
+          end :"top -100%",
+          scrub:2,
+      }
+  })
 
 
     window.onload = function () {
