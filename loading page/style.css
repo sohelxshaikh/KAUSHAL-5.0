@@ -20,7 +20,7 @@ body, html {
   height: 100%;
   color: white;
   width: 100%;
-  z-index: 99;
+  z-index: 99999;
 
   overflow: hidden;
   /* background: url("https://svvv.edu.in/images/logo-small.png"); */
@@ -145,7 +145,7 @@ a {
   margin-left: 100%;
   width: 100%;
   height: 100%;
-  background: #017bf5;
+  background: gray;
 }
 
 .menu .nav {
@@ -298,3 +298,51 @@ a {
 }
 
 /* ---------------------------- end here -------------- */
+
+
+
+/* -------------page 1 animation---------------------- */
+
+section {
+  padding: 10vw;
+  height: 100vh;
+  min-height: 100vh;
+  background: #111;
+  overflow: visible;
+  display: flex;
+  
+  flex-direction: column;
+  justify-content: center;
+}
+
+#page1-h1{
+ 
+    font-weight: 800;
+    margin: 2rem auto;
+    font-size: clamp(3vw, 2rem, 4rem);
+    text-align: center;
+    z-index: 999;
+    max-width: 800px;
+    color: #dadada;
+    mix-blend-mode: difference;
+    pointer-events: none;
+  
+}
+#page1-h1>span{
+  font-size: 60px;
+}
+
+.credit {
+  text-align: center;
+  z-index: 999;
+  font-size: 0.8rem;
+  position: absolute;
+  bottom: 15%;
+  right: 1rem;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+
+  a {
+    color: #fff;
+  }
+}
