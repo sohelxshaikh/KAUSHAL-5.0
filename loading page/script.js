@@ -1,24 +1,44 @@
-var $circle = $('.circle'),
-    $follow = $('.circle-follow');
-
-function moveCircle(e) {
-    TweenLite.to($circle, 0.3, {
-      x: e.clientX,
-      y: e.clientY
-  });
-    TweenLite.to($follow, 0.7, {
-      x: e.clientX,
-      y: e.clientY
-  });  
-}
-
-$(window).on('mousemove', moveCircle);
 
 
 
 gsap.registerPlugin(ScrollTrigger);
 
+// CURSOR
+var cursor = $(".cursor"),
+follower = $(".cursor-follower");
 
+var posX = 0,
+    posY = 0;
+
+var mouseX = 0,
+    mouseY = 0;
+
+TweenMax.to({}, 0.016, {
+  repeat: -1,
+  onRepeat: function() {
+    posX += (mouseX - posX) / 9;
+    posY += (mouseY - posY) / 9;
+
+    TweenMax.set(follower, {
+        css: {
+        left: posX - 12,
+        top: posY - 12
+        }
+    });
+
+    TweenMax.set(cursor, {
+        css: {
+        left: mouseX,
+        top: mouseY
+        }
+    });
+  }
+});
+
+$(document).on("mousemove", function(e) {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+});
 
 var tl = gsap.timeline()
 
@@ -108,7 +128,7 @@ tl
       scrollTrigger:{
           trigger:"#main",
           scroller:"body",
-           markers:true, 
+         
           start:"top -25%",
           end :"top -100%",
           scrub:2,
@@ -226,3 +246,50 @@ tl
         })
         .progress(0.5);
       
+        const scroll = new LocomotiveScroll({
+          el: document.querySelector('body'),
+          smooth: true
+        });
+
+        var $circle = $('.circle'),
+    $follow = $('.circle-follow');
+
+
+document.querySelectorAll(".elem")
+.forEach(function(elem){
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.registerPlugin("rotation");
+  var rotate =0;
+  var diffroot = 0;
+  elem.addEventListener("mousemove",function(details){
+    
+    var diff = details.clientY - elem.getBoundingClientRect().top;
+    diffroot = details.clientX - rotate;
+    rotate = details.clientX;
+    
+    gsap.to(elem.querySelector("img"),{
+      opacity:1,
+      ease:Power3,
+      top:diff,
+      left:details.clientX,
+      rotate : gsap.utils.clamp(-20 ,20 ,diffroot*0.5),
+    });
+    });
+    elem.addEventListener("mouseleave",function(details){
+    
+      var diff = details.clientY - elem.getBoundingClientRect().top;
+      diffroot = details.clientX - rotate;
+      rotate = details.clientX;
+      
+      gsap.to(elem.querySelector("img"),{
+        opacity:0,
+        ease:Power3,
+        duration:0.5
+       
+      });
+      });
+ 
+});
+
+
+        

@@ -12,8 +12,69 @@ body{
   background-color: #000;
   font-family: 'Roboto';
   position: relative;
-  cursor: none;
+  
 }
+
+.cursor {
+  position: absolute;
+  background-color: white;
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+  z-index: 1;
+  transition: 0.3s cubic-bezier(0.75, -1.27, 0.3, 2.33) transform,
+      0.2s cubic-bezier(0.75, -0.27, 0.3, 1.33) opacity;
+  user-select: none;
+  pointer-events: none;
+  z-index: 100000000000000000000000;
+  transform: scale(1);
+
+  &.active {
+      opacity: 1;
+      transform: scale(0);
+  }
+
+  &.menu-active {
+      opacity: 1;
+      transform: scale(0);
+  }
+
+  &.hovered {
+      opacity: 1;
+  }
+}
+
+.cursor-follower {
+  position: absolute;
+  border:1px solid white;
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  z-index: 1;
+  transition: 0.6s cubic-bezier(0.75, -1.27, 0.3, 2.33) transform,
+      0.2s cubic-bezier(0.75, -0.27, 0.3, 1.33) opacity, 0.2s cubic-bezier(0.75, -0.27, 0.3, 1.33) background;
+  user-select: none;
+  pointer-events: none;
+  z-index: 100000000000000000000;
+  transform: translate(2px, 2px);
+  /* //overflow: hidden; */
+
+  &.active {
+      opacity: 1;
+      transform: scale(3);
+  }
+
+  &.menu-active {
+      opacity: 1;
+      transform: scale(3);
+  }
+
+  &.hovered {
+      opacity: 1;
+  }
+
+}
+
 
 #top-screen {
   position: absolute;
@@ -63,13 +124,14 @@ body{
 
 a {
   text-decoration: none;
+  color: white;
 }
 
 #main {
   position: relative;
   height: 100%;
   width: 100%;
-  background: url("https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80");
+  /* background: url("https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80"); */
   background-size: cover;
   background-position: center;
   overflow: hidden;
@@ -196,6 +258,7 @@ a {
   z-index: 999;
   padding: 0 35px;
   position: relative;
+  background: #000;
  
 
 }
@@ -217,90 +280,24 @@ a {
   height: 100vh;
   width: 100vw;
   background-color: #000;
+  text-align: center;
+  
 }
 
 
-@media (max-width:660px) {
-  #random-text {
-    font-size: 6vw;
-    padding: 130px 10px;
-
-  }
-
-  #nav {
-    display: none;
-
-  }
-
-  #nav-logo {
-    display: flex;
-    z-index: 999;
-  }
-
-  #main .bars {
-    display: flex;
-
-
-
-  }
-
-  #top-screen>h1 {
-    padding: 60px 20px;
-    font-size: 6vh;
-  }
-
-  .page1 {
-    height: 100vh;
-    width: 100vw;
-    background-color: #017bf5;
-  }
-
-}
 
 /* -------------------------- mouse animation code ----------------------- */
 .link {
   display: inline-block;
 }
 
-.circle {
-  position: fixed;
-  background-color: #fff;
-  width: 10px;
-  height: 10px;
-  left: -10px;
-  top: -10px;
-  border-radius: 100%;
-  z-index: 9999999999;
-  /* user-select: none; */
-  /* pointer-events: none; */
-  z-index: 10000;
-  transform: scale(1);
+/* Other CSS styles above this point */
 
-  &.active {
-    opacity: 1;
-    transform: scale(0);
-  }
-}
+/* .circle and .circle-follow styles moved outside of .page1 */
 
-.circle-follow {
-  position: fixed;
-  border: 1px solid #fff;
-  width: 30px;
-  height: 30px;
-  left: -21px;
-  top: -21px;
-  border-radius: 100%;
-  z-index: 9999999;
-  user-select: none;
-  pointer-events: none;
-  z-index: 10000;
-  /* //overflow: hidden; */
-  transform: scale(1);
 
-  &.active {
-    transform: scale(3);
-  }
-}
+/* Rest of your CSS styles below this point */
+
 
 /* ---------------------------- end here -------------- */
 
@@ -309,7 +306,7 @@ a {
 /* -------------page 1 animation---------------------- */
 
 section {
-  padding: 10vw;
+  padding: 5vw;
   height: 100vh;
   min-height: 100vh;
   background: #111;
@@ -324,19 +321,19 @@ section {
  
     font-weight: 900;
     margin: 2rem auto;
-    font-size: clamp(6vw, 3rem, 6rem);
+    font-size: 7vw;
     text-align: center;
     z-index: 999;
     
     max-width: 800px;
-    line-height: 70px;
+    line-height: 50px;
     color: #dadada;
     mix-blend-mode: difference;
     pointer-events: none;
   
 }
 #page1-h1>span{
-  font-size: 1.6vw;
+  font-size: 2vw;
   font-weight: 800;
   white-space: nowrap;
   
@@ -392,9 +389,10 @@ section {
 
 .page2{
   position: relative;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 30vh;
   background-color: #000;
+  padding:40px 0px;
   color: #fff;
   
 }
@@ -424,10 +422,11 @@ section {
   display: inline-block;
   font-size: 100px;
   font-weight: 900;
-  
+ 
   margin-right: 10px;
   color: black;
-  -webkit-text-stroke: 0.1px #fff;
+  -webkit-text-stroke: 2px #fff;
+  
   
 }
 #scroller h4:hover{
@@ -445,32 +444,171 @@ section {
   
 }
 #about-us{
+  position: relative;
+  height: 100vh;
+  color: #fff;
+  padding: 20px;
+ text-align: center;
+ 
+}
+#abh1{
+  font-size: 5vw;
+}
+
+.about-kaushal{
+  display: flex;
+  width: 100%;
+  padding: 70px;
+  
+  justify-content: space-between;
+}
+.about-us-div1{
+  width: 50%;
+  font-size: 1.5vw;
+  text-align: left;
+}
+.about-us-div2{
+  width: 50%;
+  position: relative;
+  font-size: 1.8vw;
+  align-items: center;
+  
+  
+}
+.about-us-div2 h3{
+  position: absolute;
+  top: 0%;
+}
+
+
+/* -------------page3----------------- */
+.page3{
+  padding-top: 20px;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  position: relative;
+ 
+
+  padding-right: 10vw;
+ 
+  color: #fff;
+}
+.elem{
+
+  position: relative;
+  width: 100%;
+  padding: 2vw 1vw;
+  border-top: 1px solid #888;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  padding-right: 0;
 }
-#about-us>h1{
+.elem h1{
+  text-transform: uppercase;
   font-size: 6vw;
+  opacity: 0.7;
+  padding-left: 2vw;
 }
-.about-us-para{
-  font-size:1.5vw;
-  padding: 50px 100px;
-  text-align: left;
-  font-weight: 200;
-  line-height: 40px;
-  background-color: #666;
+.elemlast{
+  border-bottom: 1px solid #888;
+}
+
+.elem img{
+  position: absolute;
+  z-index: 999;
+  opacity: 0;
+  height: 200px;
+  width: 350px;
+  object-fit: cover;
+
+}
+
+#event{
+  font-size: 10vw;
+  font-weight: 600;
+  text-align: center;
+  padding-bottom: 50px;
+}
+
+
+
+
+
+
+
+
+
+@media (max-width:660px) {
+  #random-text {
+    font-size: 6vw;
+    padding: 130px 10px;
+
+  }
+  #scroller>h1{
+    
+  }
   
-  margin: 20px 100px;
-}
+  
+
+  #nav {
+    display: none;
+
+  }
+
+  #nav-logo {
+    display: flex;
+    
+    z-index: 999;
+  }
+
+  #main .bars {
+    display: flex;
 
 
+  }
 
+  #top-screen>h1 {
+    padding: 60px 20px;
+    font-size: 10vh;
+  }
 
-/* -----------------------------page 3 ------------------------------------------- */
+  .page1 {
+    height: 100vh;
+    width: 100vw;
+    background-color: #017bf5;
+  }
+  #page1-h1{
+    font-size: 60px;
+    font-weight: 900;
+  }
+  #page1-h1>span{
+    font-size: 20px;
+    white-space: normal;
+    
+  }
+  
+  #about-us>h1{
+    font-size: 50px;
+    
 
-.page3{
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-  color: #017bf5;
+  }
+  
+  .about-kaushal{
+    flex-direction: column;
+    min-width: 100%;
+   
+   
+  }
+  .about-us-div1{
+    
+    font-size: 18px;
+    padding: 2px;
+    min-width: 100%;
+    overflow:visible;
+    
+  }
+  
+
 }
